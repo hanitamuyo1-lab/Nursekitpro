@@ -10,6 +10,7 @@ import FAQ from './pages/FAQ';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import NurseKit from './pages/NurseKit';
+import ResetPassword from './pages/ResetPassword';
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
@@ -52,6 +53,7 @@ export default function App() {
         <ScrollToHash />
         <Routes>
           <Route path="/nursekit" element={<NurseKit />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="*" element={
             <Layout>
               <Routes>
