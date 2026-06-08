@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { sb } from '../lib/supabase';
 
 const DEFAULT_KEY = import.meta.env.VITE_ANTHROPIC_KEY || '';
 
@@ -289,12 +290,19 @@ function AiTutor() {
 export default function Features() {
   const { user, tier, openAuthModal } = useAuth();
 
-  function handlePaidPlan(stripeUrl) {
-    if (!user) {
-      openAuthModal();
-    } else {
-      window.open(stripeUrl, '_blank', 'noopener noreferrer');
+  async function handlePaidPlan(stripeUrl, isLifetime = false) {
+    if (!user) { openAuthModal(); return; }
+    // If upgrading to lifetime from pro, cancel the monthly subscription first
+    if (isLifetime && tier === 'pro') {
+      try {
+        const { data: { session } } = await sb.auth.getSession();
+        await fetch('https://aovgxslluxrenozowpoo.supabase.co/functions/v1/cancel-subscription', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${session.access_token}` },
+        });
+      } catch (_) { /* proceed anyway */ }
     }
+    window.open(stripeUrl, '_blank', 'noopener noreferrer');
   }
 
   return (
@@ -441,8 +449,8 @@ export default function Features() {
               {user && tier === 'lifetime' ? (
                 <span className="plan-btn stroked" style={{ textAlign: 'center', cursor: 'default' }}>Current plan</span>
               ) : (
-                <button className="plan-btn stroked" onClick={() => handlePaidPlan('https://buy.stripe.com/fZu8wIaPo9mBcIKcsacfK04')}>
-                  {user ? 'Get lifetime access' : 'Get lifetime access'}
+                <button className="plan-btn stroked" onClick={() => handlePaidPlan('https://buy.stripe.com/fZu8wIaPo9mBcIKcsacfK04', true)}>
+                  {tier === 'pro' ? 'Upgrade to Lifetime' : 'Get lifetime access'}
                 </button>
               )}
             </div>

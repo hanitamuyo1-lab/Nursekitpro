@@ -89,6 +89,14 @@ export default function NurseKit() {
 
   async function handleDeleteAccount() {
     setDeleting(true);
+    // Cancel active Stripe subscription first if on pro
+    if (tier === 'pro') {
+      const { data: { session } } = await sb.auth.getSession();
+      await fetch('https://aovgxslluxrenozowpoo.supabase.co/functions/v1/cancel-subscription', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      });
+    }
     const { error } = await sb.rpc('delete_user');
     if (error) {
       alert('Could not delete account: ' + error.message);
@@ -184,6 +192,11 @@ export default function NurseKit() {
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 200, padding: 16 }}>
           <div style={{ background: '#fff', borderRadius: 14, padding: '32px 28px', maxWidth: 360, width: '100%', boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}>
             <h3 style={{ fontSize: 18, fontWeight: 700, color: '#1a2e35', marginBottom: 10 }}>Delete your account?</h3>
+            {tier === 'pro' && (
+              <div style={{ background: '#fff8e1', border: '1px solid #ffe082', borderRadius: 8, padding: '10px 14px', marginBottom: 14, fontSize: 13, color: '#7a5800' }}>
+                You have an active Pro subscription. Deleting your account will cancel it immediately.
+              </div>
+            )}
             <p style={{ fontSize: 14, color: '#4c6272', marginBottom: 24 }}>This permanently deletes your account, bookmarks, and all data. This cannot be undone.</p>
             <div style={{ display: 'flex', gap: 10 }}>
               <button
