@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { sb } from '../lib/supabase';
 
 const pwToggleStyle = {
   position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
@@ -11,7 +10,6 @@ const pwToggleStyle = {
 export default function SiteAuthModal({ onClose }) {
   const { signIn, signUp } = useAuth();
   const [tab, setTab] = useState('signup');
-  const [screen, setScreen] = useState('main');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPw, setShowPw] = useState(false);
@@ -20,16 +18,8 @@ export default function SiteAuthModal({ onClose }) {
 
   function switchTab(t) {
     setTab(t);
-    setScreen('main');
     setMsg(null);
     setEmail('');
-    setPassword('');
-    setShowPw(false);
-  }
-
-  function openForgot() {
-    setScreen('forgot');
-    setMsg(null);
     setPassword('');
     setShowPw(false);
   }
@@ -67,71 +57,6 @@ export default function SiteAuthModal({ onClose }) {
     } else {
       setTimeout(onClose, 300);
     }
-  }
-
-  async function handleForgot(e) {
-    e.preventDefault();
-    if (!email) { setMsg({ err: true, text: 'Please enter your email address.' }); return; }
-    setBusy(true);
-    const { error } = await sb.auth.resetPasswordForEmail(email, {
-      redirectTo: 'https://www.nursekitpro.uk/reset-password',
-    });
-    setBusy(false);
-    if (error) {
-      setMsg({ err: true, text: error.message });
-    } else {
-      setScreen('forgot-sent');
-    }
-  }
-
-  if (screen === 'forgot' || screen === 'forgot-sent') {
-    return (
-      <div className="site-modal-overlay" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
-        <div className="site-modal" data-auth-exempt>
-          <button className="site-modal-close" onClick={onClose} aria-label="Close">×</button>
-          <div className="site-modal-brand">
-            <span className="brand-mark">C<em>RN</em></span>
-            <span>Confident RN</span>
-          </div>
-
-          {screen === 'forgot' ? (
-            <>
-              <h2 className="site-modal-title">Reset your password</h2>
-              <p className="site-modal-sub">Enter your email and we&apos;ll send a reset link.</p>
-              <form onSubmit={handleForgot}>
-                <div className="site-modal-field">
-                  <label>Email address</label>
-                  <input type="email" placeholder="nurse@email.com" autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} required />
-                </div>
-                {msg && <div className={`site-modal-msg${msg.err ? ' err' : ' ok'}`}>{msg.text}</div>}
-                <button type="submit" className="site-modal-submit" disabled={busy}>
-                  {busy ? 'Sending…' : 'Send reset link'}
-                </button>
-              </form>
-              <p className="site-modal-switch">
-                <button type="button" onClick={() => switchTab('signin')}>← Back to sign in</button>
-              </p>
-            </>
-          ) : (
-            <>
-              <h2 className="site-modal-title">Check your email</h2>
-              <p className="site-modal-sub">
-                We&apos;ve sent a password reset link to <strong>{email}</strong>. Click the link in the email to set a new password.
-              </p>
-              <p className="site-modal-sub" style={{ marginTop: 8, fontSize: 13, color: '#7a8e97' }}>
-                Didn&apos;t receive it? Check your spam folder or{' '}
-                <button type="button" style={{ background: 'none', border: 'none', color: '#e03030', cursor: 'pointer', padding: 0, fontSize: 13 }} onClick={() => { setScreen('forgot'); setMsg(null); }}>
-                  try again
-                </button>.
-              </p>
-              <button type="button" className="site-modal-submit" style={{ marginTop: 20 }} onClick={() => switchTab('signin')}>
-                Back to sign in
-              </button>
-            </>
-          )}
-        </div>
-      </div>
-    );
   }
 
   return (
@@ -180,14 +105,6 @@ export default function SiteAuthModal({ onClose }) {
               </button>
             </div>
           </div>
-
-          {tab === 'signin' && (
-            <div style={{ textAlign: 'right', marginTop: -4, marginBottom: 8 }}>
-              <button type="button" onClick={openForgot} style={{ background: 'none', border: 'none', color: '#e03030', cursor: 'pointer', fontSize: 13, padding: 0 }}>
-                Forgot password?
-              </button>
-            </div>
-          )}
 
           {msg && (
             <div className={`site-modal-msg${msg.err ? ' err' : ' ok'}`}>{msg.text}</div>
