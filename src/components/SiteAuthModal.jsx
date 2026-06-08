@@ -2,12 +2,19 @@ import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { sb } from '../lib/supabase';
 
+const pwToggleStyle = {
+  position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
+  background: 'none', border: 'none', cursor: 'pointer', fontSize: 12,
+  color: '#7a8e97', fontWeight: 600, padding: '2px 4px', lineHeight: 1,
+};
+
 export default function SiteAuthModal({ onClose }) {
   const { signIn, signUp } = useAuth();
   const [tab, setTab] = useState('signup');
-  const [screen, setScreen] = useState('main'); // 'main' | 'forgot' | 'forgot-sent'
+  const [screen, setScreen] = useState('main');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPw, setShowPw] = useState(false);
   const [msg, setMsg] = useState(null);
   const [busy, setBusy] = useState(false);
 
@@ -17,12 +24,14 @@ export default function SiteAuthModal({ onClose }) {
     setMsg(null);
     setEmail('');
     setPassword('');
+    setShowPw(false);
   }
 
   function openForgot() {
     setScreen('forgot');
     setMsg(null);
     setPassword('');
+    setShowPw(false);
   }
 
   async function handleSignIn(e) {
@@ -33,8 +42,7 @@ export default function SiteAuthModal({ onClose }) {
     if (error) {
       setMsg({ err: true, text: error.message });
     } else {
-      setMsg({ err: false, text: 'Signed in!' });
-      setTimeout(onClose, 700);
+      setTimeout(onClose, 300);
     }
     setBusy(false);
   }
@@ -47,10 +55,18 @@ export default function SiteAuthModal({ onClose }) {
     const error = await signUp(email, password);
     if (error) {
       setMsg({ err: true, text: error.message });
-    } else {
-      setMsg({ err: false, text: 'Account created! Check your email to verify, then sign in.' });
+      setBusy(false);
+      return;
     }
+    // Auto sign in immediately — no email verification required
+    const signInError = await signIn(email, password);
     setBusy(false);
+    if (signInError) {
+      setMsg({ err: false, text: 'Account created! Please sign in.' });
+      switchTab('signin');
+    } else {
+      setTimeout(onClose, 300);
+    }
   }
 
   async function handleForgot(e) {
@@ -149,7 +165,20 @@ export default function SiteAuthModal({ onClose }) {
           </div>
           <div className="site-modal-field">
             <label>{tab === 'signup' ? 'Password (min 6 characters)' : 'Password'}</label>
-            <input type="password" placeholder="••••••••" autoComplete={tab === 'signup' ? 'new-password' : 'current-password'} value={password} onChange={e => setPassword(e.target.value)} required />
+            <div style={{ position: 'relative' }}>
+              <input
+                type={showPw ? 'text' : 'password'}
+                placeholder="••••••••"
+                autoComplete={tab === 'signup' ? 'new-password' : 'current-password'}
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                required
+                style={{ paddingRight: 52 }}
+              />
+              <button type="button" style={pwToggleStyle} onClick={() => setShowPw(v => !v)}>
+                {showPw ? 'Hide' : 'Show'}
+              </button>
+            </div>
           </div>
 
           {tab === 'signin' && (

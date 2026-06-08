@@ -7,6 +7,8 @@ export default function ResetPassword() {
   const [screen, setScreen] = useState('loading'); // loading | form | success | invalid
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
+  const [showPw, setShowPw] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [msg, setMsg] = useState(null);
   const [busy, setBusy] = useState(false);
 
@@ -72,27 +74,37 @@ export default function ResetPassword() {
             <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: 14 }}>
                 <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#2c4a57', marginBottom: 6 }}>New password (min 6 characters)</label>
-                <input
-                  type="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  autoComplete="new-password"
-                  required
-                  style={{ width: '100%', padding: '10px 12px', border: '1.5px solid #d0dce2', borderRadius: 8, fontSize: 15, boxSizing: 'border-box' }}
-                />
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type={showPw ? 'text' : 'password'}
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    autoComplete="new-password"
+                    required
+                    style={{ width: '100%', padding: '10px 44px 10px 12px', border: '1.5px solid #d0dce2', borderRadius: 8, fontSize: 15, boxSizing: 'border-box' }}
+                  />
+                  <button type="button" onClick={() => setShowPw(v => !v)} style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', fontSize: 12, color: '#7a8e97', fontWeight: 600 }}>
+                    {showPw ? 'Hide' : 'Show'}
+                  </button>
+                </div>
               </div>
               <div style={{ marginBottom: 20 }}>
                 <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#2c4a57', marginBottom: 6 }}>Confirm new password</label>
-                <input
-                  type="password"
-                  placeholder="••••••••"
-                  value={confirm}
-                  onChange={e => setConfirm(e.target.value)}
-                  autoComplete="new-password"
-                  required
-                  style={{ width: '100%', padding: '10px 12px', border: '1.5px solid #d0dce2', borderRadius: 8, fontSize: 15, boxSizing: 'border-box' }}
-                />
+                <div style={{ position: 'relative' }}>
+                  <input
+                    type={showConfirm ? 'text' : 'password'}
+                    placeholder="••••••••"
+                    value={confirm}
+                    onChange={e => setConfirm(e.target.value)}
+                    autoComplete="new-password"
+                    required
+                    style={{ width: '100%', padding: '10px 44px 10px 12px', border: '1.5px solid #d0dce2', borderRadius: 8, fontSize: 15, boxSizing: 'border-box' }}
+                  />
+                  <button type="button" onClick={() => setShowConfirm(v => !v)} style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', fontSize: 12, color: '#7a8e97', fontWeight: 600 }}>
+                    {showConfirm ? 'Hide' : 'Show'}
+                  </button>
+                </div>
               </div>
               {msg && (
                 <div style={{ padding: '10px 14px', borderRadius: 8, fontSize: 13, marginBottom: 16, background: msg.err ? '#fff0f0' : '#f0fff4', color: msg.err ? '#c00' : '#1a6b3a', border: `1px solid ${msg.err ? '#fcc' : '#b2dfcc'}` }}>
