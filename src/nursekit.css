@@ -1,0 +1,1038 @@
+/* NurseKit Pro — Confident RN red theme */
+
+.nursekit-root {
+  --nk-red: #8a0e2c;
+  --nk-red-dark: #6b0a22;
+  --nk-red-darker: #4f0719;
+  --nk-red-mid: #a41538;
+  --nk-red-tint: rgba(138,14,44,.08);
+  --nk-red-tint2: rgba(138,14,44,.04);
+  --nk-ink: #212b32;
+  --nk-ink-soft: #4c6272;
+  --nk-ink-mute: #768692;
+  --nk-bg: #ffffff;
+  --nk-bg-grey: #f0f4f5;
+  --nk-bg-grey2: #e8edee;
+  --nk-line: #d8dde0;
+  --nk-danger: #ef4444;
+  --nk-danger-bg: #fef2f2;
+  --nk-warn: #b45309;
+  --nk-warn-bg: #fffbeb;
+  --nk-ok: #15803d;
+  --nk-ok-bg: #f0fdf4;
+  --nk-info: #0369a1;
+  --nk-info-bg: #f0f9ff;
+  --nk-sans: 'Inter','Helvetica Neue',Arial,sans-serif;
+  --nk-mono: 'Courier New', monospace;
+
+  box-sizing: border-box;
+  background: var(--nk-bg-grey);
+  color: var(--nk-ink);
+  font-family: var(--nk-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.nursekit-root *,
+.nursekit-root *::before,
+.nursekit-root *::after {
+  box-sizing: border-box;
+}
+
+/* HOME LINK */
+.nursekit-root .nk-home-link{color:rgba(255,255,255,.75);text-decoration:none;font:600 13px var(--nk-sans);border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:4px 10px;transition:all .15s;white-space:nowrap}
+.nursekit-root .nk-home-link:hover{color:#fff;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.5)}
+
+/* HEADER */
+.nursekit-root .nk-header {
+  background: var(--nk-red);
+  color: #fff;
+  padding: 0 24px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(138,14,44,.25);
+}
+
+.nursekit-root .nk-logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.nursekit-root .nk-logo span { color: rgba(255,255,255,.75); font-weight: 400; }
+.nursekit-root .nk-logo em { color: #fff; font-style: italic; font-weight: 900; }
+
+.nursekit-root .nk-header-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,.3);
+}
+
+/* NAV */
+.nursekit-root .nk-nav {
+  display: flex;
+  background: var(--nk-red-dark);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  padding: 0 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nursekit-root .nk-nav::-webkit-scrollbar { display: none; }
+
+.nursekit-root .nk-nav-tab {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: rgba(255,255,255,.65);
+  padding: 13px 18px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.15s;
+}
+
+.nursekit-root .nk-nav-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #fff;
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+
+.nursekit-root .nk-nav-tab.active { color: #fff; }
+.nursekit-root .nk-nav-tab.active::after { transform: scaleX(1); }
+.nursekit-root .nk-nav-tab:hover { color: #fff; }
+
+/* PANELS */
+.nursekit-root .nk-panels {
+  padding: 24px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.nursekit-root .nk-panel { animation: nkFadeIn 0.2s ease; }
+
+@keyframes nkFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* TYPOGRAPHY */
+.nursekit-root .nk-section-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+  color: var(--nk-ink);
+}
+
+.nursekit-root .nk-section-title span { color: var(--nk-red); }
+.nursekit-root .nk-section-sub { font-size: 14px; color: var(--nk-ink-soft); margin-bottom: 20px; }
+
+/* CARD */
+.nursekit-root .nk-card {
+  background: #fff;
+  border: 1px solid var(--nk-line);
+  border-top: 4px solid var(--nk-red);
+  border-radius: 4px;
+  padding: 20px 22px;
+  margin-bottom: 16px;
+}
+
+.nursekit-root .nk-card-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nk-red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nursekit-root .nk-card-title .nk-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nk-red);
+}
+
+/* FORM */
+.nursekit-root .nk-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.nursekit-root .nk-field { display: flex; flex-direction: column; gap: 5px; }
+
+.nursekit-root .nk-field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nk-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.nursekit-root .nk-field input,
+.nursekit-root .nk-field select {
+  font-family: var(--nk-sans);
+  font-size: 14px;
+  padding: 10px 13px;
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--nk-ink);
+  outline: none;
+  transition: border 0.15s, box-shadow 0.15s;
+}
+
+.nursekit-root .nk-field input:focus,
+.nursekit-root .nk-field select:focus {
+  border-color: var(--nk-red);
+  box-shadow: 0 0 0 3px rgba(138,14,44,.12);
+}
+
+/* MODE PILLS */
+.nursekit-root .nk-mode-pills { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
+
+.nursekit-root .nk-pill {
+  padding: 6px 14px;
+  border: 2px solid var(--nk-line);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--nk-ink-mute);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-family: var(--nk-sans);
+}
+
+.nursekit-root .nk-pill.active {
+  background: var(--nk-red-tint);
+  border-color: var(--nk-red);
+  color: var(--nk-red);
+}
+
+/* BUTTONS */
+.nursekit-root .nk-btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: var(--nk-red);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--nk-sans);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.15s;
+  letter-spacing: 0.2px;
+}
+
+.nursekit-root .nk-btn-primary:hover { background: var(--nk-red-dark); }
+.nursekit-root .nk-btn-gold { background: var(--nk-red-mid); }
+.nursekit-root .nk-btn-gold:hover { background: var(--nk-red-dark); }
+
+/* RESULT BOX */
+.nursekit-root .nk-result-box {
+  margin-top: 16px;
+  padding: 20px 22px;
+  border-radius: 4px;
+  border: 1px solid var(--nk-line);
+  border-left: 5px solid var(--nk-red);
+  background: #fff;
+}
+
+.nursekit-root .nk-result-main {
+  font-family: var(--nk-mono);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--nk-red);
+  letter-spacing: -1px;
+}
+
+.nursekit-root .nk-result-unit { font-size: 18px; color: var(--nk-ink-soft); margin-left: 6px; }
+
+.nursekit-root .nk-result-detail {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--nk-ink-soft);
+  line-height: 1.75;
+}
+
+.nursekit-root .nk-result-detail strong { color: var(--nk-ink); font-weight: 600; }
+
+/* ALERTS */
+.nursekit-root .nk-alert {
+  margin-top: 10px;
+  padding: 11px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.nursekit-root .nk-alert-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.nursekit-root .nk-alert.danger { background: var(--nk-danger-bg); color: #b91c1c; border: 1px solid rgba(239,68,68,.3); }
+.nursekit-root .nk-alert.warn { background: var(--nk-warn-bg); color: var(--nk-warn); border: 1px solid rgba(180,83,9,.25); }
+.nursekit-root .nk-alert.ok { background: var(--nk-ok-bg); color: var(--nk-ok); border: 1px solid rgba(21,128,61,.25); }
+
+/* DRUG REFERENCE */
+.nursekit-root .nk-ref-top { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
+
+.nursekit-root .nk-search-wrap { position: relative; flex: 1; min-width: 220px; }
+
+.nursekit-root .nk-search-wrap input {
+  width: 100%;
+  font-family: var(--nk-sans);
+  font-size: 14px;
+  padding: 11px 14px 11px 42px;
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--nk-ink);
+  outline: none;
+  transition: border 0.15s, box-shadow 0.15s;
+}
+
+.nursekit-root .nk-search-wrap input:focus {
+  border-color: var(--nk-red);
+  box-shadow: 0 0 0 3px rgba(138,14,44,.12);
+}
+
+.nursekit-root .nk-search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--nk-ink-mute);
+  font-size: 15px;
+}
+
+.nursekit-root .nk-cat-filter {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  margin-bottom: 12px;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.nursekit-root .nk-cat-filter::-webkit-scrollbar { display: none; }
+
+.nursekit-root .nk-cat-btn {
+  padding: 5px 12px;
+  border: 1px solid var(--nk-line);
+  background: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nk-ink-soft);
+  cursor: pointer;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-family: var(--nk-sans);
+}
+
+.nursekit-root .nk-cat-btn.active {
+  background: var(--nk-red-tint);
+  border-color: var(--nk-red);
+  color: var(--nk-red);
+}
+
+.nursekit-root .nk-drug-list {
+  background: #fff;
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  overflow: hidden;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.nursekit-root .nk-drug-item {
+  padding: 11px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid var(--nk-bg-grey);
+  transition: background 0.1s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.nursekit-root .nk-drug-item:last-child { border-bottom: none; }
+.nursekit-root .nk-drug-item:hover { background: var(--nk-bg-grey); }
+.nursekit-root .nk-drug-item .nk-di-name { font-weight: 600; color: var(--nk-ink); }
+.nursekit-root .nk-drug-item .nk-di-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.nursekit-root .nk-drug-cat { font-size: 10px; color: var(--nk-red); font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; }
+.nursekit-root .nk-drug-spec { font-size: 10px; color: var(--nk-ink-mute); font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+
+/* DRUG DETAIL */
+.nursekit-root .nk-drug-name {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 3px;
+  color: var(--nk-ink);
+}
+
+.nursekit-root .nk-drug-name span { color: var(--nk-red); }
+.nursekit-root .nk-drug-class { font-size: 12px; color: var(--nk-red); font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+
+.nursekit-root .nk-drug-specialty-tag {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--nk-ink-soft);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--nk-bg-grey);
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  padding: 3px 10px;
+  margin-bottom: 16px;
+}
+
+.nursekit-root .nk-info-tabs { display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap; }
+
+.nursekit-root .nk-info-tab {
+  padding: 6px 14px;
+  border: 1px solid var(--nk-line);
+  background: #fff;
+  font-family: var(--nk-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--nk-ink-soft);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.nursekit-root .nk-info-tab.active {
+  background: var(--nk-red-tint);
+  border-color: var(--nk-red);
+  color: var(--nk-red);
+}
+
+.nursekit-root .nk-info-row {
+  display: flex;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--nk-bg-grey);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--nk-ink);
+}
+
+.nursekit-root .nk-info-row:last-child { border-bottom: none; }
+
+.nursekit-root .nk-info-label {
+  width: 130px;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nk-ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-top: 2px;
+}
+
+.nursekit-root .nk-info-val { flex: 1; font-size: 14px; color: var(--nk-ink); line-height: 1.65; }
+
+.nursekit-root .nk-nurse-box {
+  background: var(--nk-red-tint2);
+  border: 1px solid rgba(138,14,44,.15);
+  border-left: 4px solid var(--nk-red);
+  border-radius: 4px;
+  padding: 16px 18px;
+}
+
+.nursekit-root .nk-nurse-box h4 {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nk-red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.nursekit-root .nk-nurse-box ul { list-style: none; font-size: 14px; color: var(--nk-ink); line-height: 1.75; padding: 0; }
+.nursekit-root .nk-nurse-box ul li::before { content: '→ '; color: var(--nk-red); font-weight: 700; }
+
+.nursekit-root .nk-back-btn {
+  font-family: var(--nk-sans);
+  font-size: 14px;
+  color: var(--nk-red);
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+}
+
+.nursekit-root .nk-drug-count { font-size: 12px; color: var(--nk-ink-mute); margin-bottom: 8px; font-weight: 500; }
+
+/* INTERACTIONS */
+.nursekit-root .nk-drug-tags-wrap {
+  min-height: 48px;
+  background: var(--nk-bg-grey);
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  padding: 8px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: text;
+}
+
+.nursekit-root .nk-dtag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--nk-red-tint);
+  border: 1px solid rgba(138,14,44,.25);
+  color: var(--nk-red-dark);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.nursekit-root .nk-dtag button {
+  background: none;
+  border: none;
+  color: var(--nk-red);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+}
+
+.nursekit-root .nk-mini-search {
+  width: 100%;
+  font-family: var(--nk-sans);
+  font-size: 14px;
+  padding: 10px 13px;
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--nk-ink);
+  outline: none;
+  transition: border 0.15s, box-shadow 0.15s;
+  margin-bottom: 8px;
+}
+
+.nursekit-root .nk-mini-search:focus {
+  border-color: var(--nk-red);
+  box-shadow: 0 0 0 3px rgba(138,14,44,.12);
+}
+
+.nursekit-root .nk-mini-drug-list {
+  background: #fff;
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  overflow: hidden;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.nursekit-root .nk-mini-drug-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid var(--nk-bg-grey);
+}
+
+.nursekit-root .nk-mini-drug-item:last-child { border-bottom: none; }
+.nursekit-root .nk-mini-drug-item:hover { background: var(--nk-bg-grey); }
+
+.nursekit-root .nk-int-result {
+  padding: 14px 16px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid;
+}
+
+.nursekit-root .nk-int-result.severe { background: var(--nk-danger-bg); border-color: rgba(239,68,68,.35); color: #b91c1c; }
+.nursekit-root .nk-int-result.moderate { background: var(--nk-warn-bg); border-color: rgba(180,83,9,.3); color: var(--nk-warn); }
+.nursekit-root .nk-int-result.minor { background: var(--nk-ok-bg); border-color: rgba(21,128,61,.25); color: var(--nk-ok); }
+.nursekit-root .nk-int-result h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.nursekit-root .nk-int-result p { font-size: 13px; opacity: 0.9; line-height: 1.6; }
+.nursekit-root .nk-int-severity { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; opacity: 0.7; margin-bottom: 4px; }
+
+/* URGENCY BANNER */
+.nursekit-root .nk-urgency-banner {
+  padding: 13px 16px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nursekit-root .nk-urgency-banner.critical { background: var(--nk-danger-bg); color: #b91c1c; border: 1px solid rgba(239,68,68,.35); }
+.nursekit-root .nk-urgency-banner.concern { background: var(--nk-warn-bg); color: var(--nk-warn); border: 1px solid rgba(180,83,9,.3); }
+.nursekit-root .nk-urgency-banner.normal { background: var(--nk-ok-bg); color: var(--nk-ok); border: 1px solid rgba(21,128,61,.25); }
+
+/* LABS */
+.nursekit-root .nk-lab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+
+.nursekit-root .nk-lab-field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--nk-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.nursekit-root .nk-lab-field .nk-lab-ref { font-size: 10px; color: var(--nk-ink-mute); margin-top: 3px; font-style: italic; }
+
+.nursekit-root .nk-lab-field input {
+  width: 100%;
+  font-family: var(--nk-mono);
+  font-size: 14px;
+  padding: 9px 11px;
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--nk-ink);
+  outline: none;
+  transition: border 0.15s;
+}
+
+.nursekit-root .nk-lab-field input:focus { border-color: var(--nk-red); box-shadow: 0 0 0 3px rgba(138,14,44,.12); }
+
+.nursekit-root .nk-lab-result-item {
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid var(--nk-line);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.nursekit-root .nk-lab-status { width: 60px; flex-shrink: 0; text-align: center; }
+.nursekit-root .nk-status-badge { display: block; padding: 3px 6px; border-radius: 4px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.nursekit-root .nk-status-val { font-family: var(--nk-mono); font-size: 16px; font-weight: 700; margin-top: 5px; }
+.nursekit-root .nk-lab-info h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--nk-ink); }
+.nursekit-root .nk-lab-info p { font-size: 13px; color: var(--nk-ink-soft); line-height: 1.55; }
+.nursekit-root .nk-lab-action { margin-top: 6px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px; display: inline-block; }
+
+.nursekit-root .nk-status-normal .nk-lab-result-item { background: var(--nk-ok-bg); border-color: rgba(21,128,61,.2); }
+.nursekit-root .nk-status-normal .nk-status-badge { background: rgba(21,128,61,.15); color: var(--nk-ok); }
+.nursekit-root .nk-status-normal .nk-status-val { color: var(--nk-ok); }
+.nursekit-root .nk-status-normal .nk-lab-action { background: rgba(21,128,61,.1); color: var(--nk-ok); }
+
+.nursekit-root .nk-status-low .nk-lab-result-item { background: var(--nk-info-bg); border-color: rgba(3,105,161,.2); }
+.nursekit-root .nk-status-low .nk-status-badge { background: rgba(3,105,161,.12); color: var(--nk-info); }
+.nursekit-root .nk-status-low .nk-status-val { color: var(--nk-info); }
+.nursekit-root .nk-status-low .nk-lab-action { background: rgba(3,105,161,.1); color: var(--nk-info); }
+
+.nursekit-root .nk-status-high .nk-lab-result-item { background: var(--nk-warn-bg); border-color: rgba(180,83,9,.2); }
+.nursekit-root .nk-status-high .nk-status-badge { background: rgba(180,83,9,.12); color: var(--nk-warn); }
+.nursekit-root .nk-status-high .nk-status-val { color: var(--nk-warn); }
+.nursekit-root .nk-status-high .nk-lab-action { background: rgba(180,83,9,.1); color: var(--nk-warn); }
+
+.nursekit-root .nk-status-critical .nk-lab-result-item { background: var(--nk-danger-bg); border-color: rgba(239,68,68,.25); }
+.nursekit-root .nk-status-critical .nk-status-badge { background: rgba(239,68,68,.15); color: #b91c1c; }
+.nursekit-root .nk-status-critical .nk-status-val { color: #b91c1c; }
+.nursekit-root .nk-status-critical .nk-lab-action { background: rgba(239,68,68,.12); color: #b91c1c; }
+
+/* EMPTY STATE */
+.nursekit-root .nk-empty { text-align: center; padding: 36px 20px; color: var(--nk-ink-mute); font-size: 14px; }
+.nursekit-root .nk-empty-icon { font-size: 36px; margin-bottom: 12px; opacity: 0.35; }
+
+/* AUTH BUTTON */
+.nursekit-root .nk-auth-btn {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 2px solid rgba(255,255,255,.5);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  transition: all 0.15s;
+  white-space: nowrap;
+  font-family: var(--nk-sans);
+}
+
+.nursekit-root .nk-auth-btn:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+.nursekit-root .nk-auth-btn.signed-in { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.1); }
+
+/* AUTH MODAL */
+.nursekit-root .nk-auth-overlay {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.nursekit-root .nk-auth-modal {
+  background: #fff;
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  border-top: 5px solid var(--nk-red);
+  padding: 28px;
+  width: 100%;
+  max-width: 380px;
+  margin: 16px;
+  position: relative;
+  box-shadow: 0 16px 48px rgba(0,0,0,.18);
+}
+
+.nursekit-root .nk-auth-modal h2 { font-size: 22px; font-weight: 800; margin-bottom: 4px; color: var(--nk-ink); }
+.nursekit-root .nk-auth-modal p { font-size: 14px; color: var(--nk-ink-soft); margin-bottom: 20px; }
+
+.nursekit-root .nk-auth-tabs { display: flex; gap: 6px; margin-bottom: 20px; }
+
+.nursekit-root .nk-auth-tab {
+  flex: 1;
+  padding: 9px;
+  border: 1px solid var(--nk-line);
+  background: var(--nk-bg-grey);
+  font-family: var(--nk-sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--nk-ink-soft);
+  cursor: pointer;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  transition: all 0.15s;
+}
+
+.nursekit-root .nk-auth-tab.active { background: var(--nk-red-tint); border-color: var(--nk-red); color: var(--nk-red); }
+
+.nursekit-root .nk-auth-field { margin-bottom: 14px; }
+.nursekit-root .nk-auth-field label { display: block; font-size: 11px; font-weight: 700; color: var(--nk-ink-soft); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 5px; }
+
+.nursekit-root .nk-auth-field input {
+  width: 100%;
+  font-family: var(--nk-sans);
+  font-size: 14px;
+  padding: 10px 13px;
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--nk-ink);
+  outline: none;
+  transition: border 0.15s;
+}
+
+.nursekit-root .nk-auth-field input:focus { border-color: var(--nk-red); box-shadow: 0 0 0 3px rgba(138,14,44,.12); }
+
+.nursekit-root .nk-auth-submit {
+  width: 100%;
+  padding: 12px;
+  background: var(--nk-red);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--nk-sans);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+  letter-spacing: 0.2px;
+  transition: background 0.15s;
+}
+
+.nursekit-root .nk-auth-submit:hover { background: var(--nk-red-dark); }
+
+.nursekit-root .nk-auth-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: var(--nk-ink-mute);
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.nursekit-root .nk-auth-msg { margin-top: 10px; font-size: 13px; padding: 9px 12px; border-radius: 4px; font-weight: 500; }
+.nursekit-root .nk-auth-msg.err { background: var(--nk-danger-bg); color: #b91c1c; border: 1px solid rgba(239,68,68,.3); }
+.nursekit-root .nk-auth-msg.ok { background: var(--nk-ok-bg); color: var(--nk-ok); border: 1px solid rgba(21,128,61,.25); }
+
+/* AI TUTOR STATUS + API BANNER */
+.nursekit-root .nk-api-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #fffbeb;
+  border: 1px solid #f59e0b;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #92400e;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.nursekit-root .nk-api-banner a { color: var(--nk-red); font-weight: 600; }
+.nursekit-root .nk-api-banner button {
+  padding: 6px 14px;
+  background: var(--nk-red);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--nk-sans);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nursekit-root .nk-api-banner button:hover { background: var(--nk-red-dark); }
+
+.nursekit-root .nk-tutor-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nk-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+.nursekit-root .nk-tutor-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: nkPulse 2s infinite;
+}
+@keyframes nkPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.nursekit-root .nk-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 2px;
+}
+
+/* AI TUTOR CHAT */
+.nursekit-root .nk-chat-wrap {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 200px);
+  min-height: 400px;
+  max-height: 700px;
+}
+
+.nursekit-root .nk-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nursekit-root .nk-chat-msg {
+  max-width: 86%;
+  padding: 12px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.nursekit-root .nk-chat-msg.user {
+  align-self: flex-end;
+  background: var(--nk-red);
+  color: #fff;
+  border-bottom-right-radius: 1px;
+}
+
+.nursekit-root .nk-chat-msg.assistant {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid var(--nk-line);
+  color: var(--nk-ink);
+  border-bottom-left-radius: 1px;
+}
+
+.nursekit-root .nk-chat-msg.assistant strong { color: var(--nk-red); }
+.nursekit-root .nk-chat-msg.assistant code { background: var(--nk-bg-grey); padding: 1px 5px; border-radius: 3px; font-family: var(--nk-mono); font-size: 13px; color: var(--nk-ink); }
+
+.nursekit-root .nk-chat-input-wrap {
+  display: flex;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 2px solid var(--nk-line);
+  margin-top: 8px;
+}
+
+.nursekit-root .nk-chat-input {
+  flex: 1;
+  font-family: var(--nk-sans);
+  font-size: 14px;
+  padding: 11px 14px;
+  border: 1px solid var(--nk-line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--nk-ink);
+  outline: none;
+  resize: none;
+  max-height: 120px;
+  line-height: 1.45;
+  transition: border 0.15s;
+}
+
+.nursekit-root .nk-chat-input:focus { border-color: var(--nk-red); box-shadow: 0 0 0 3px rgba(138,14,44,.12); }
+
+.nursekit-root .nk-chat-send {
+  padding: 11px 18px;
+  background: var(--nk-red);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--nk-sans);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  align-self: flex-end;
+  transition: background 0.15s;
+}
+
+.nursekit-root .nk-chat-send:hover { background: var(--nk-red-dark); }
+.nursekit-root .nk-chat-send:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.nursekit-root .nk-quick-prompts { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+
+.nursekit-root .nk-qp {
+  padding: 6px 13px;
+  border: 1px solid var(--nk-line);
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--nk-ink-soft);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+  font-family: var(--nk-sans);
+}
+
+.nursekit-root .nk-qp:hover { border-color: var(--nk-red); color: var(--nk-red); background: var(--nk-red-tint); }
+
+.nursekit-root .nk-typing-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--nk-ink-mute);
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: nkBlink 1.2s infinite;
+}
+
+.nursekit-root .nk-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.nursekit-root .nk-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes nkBlink {
+  0%, 80%, 100% { opacity: 0.25; }
+  40% { opacity: 1; }
+}
+
+/* BOOKMARKS */
+.nursekit-root .nk-bm-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--nk-line);
+  padding: 2px 4px;
+  line-height: 1;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.nursekit-root .nk-bm-btn.saved { color: var(--nk-red); }
+.nursekit-root .nk-bm-btn:hover { color: var(--nk-red); }
+
+.nursekit-root .nk-bm-detail-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 13px;
+  border: 1px solid var(--nk-line);
+  background: #fff;
+  font-family: var(--nk-sans);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--nk-ink-soft);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 12px;
+}
+
+.nursekit-root .nk-bm-detail-btn.saved { border-color: var(--nk-red); color: var(--nk-red); background: var(--nk-red-tint); }
+.nursekit-root .nk-bm-detail-btn:hover { border-color: var(--nk-red); color: var(--nk-red); }
+
+/* SCROLLBAR */
+.nursekit-root ::-webkit-scrollbar { width: 5px; height: 5px; }
+.nursekit-root ::-webkit-scrollbar-track { background: var(--nk-bg-grey); }
+.nursekit-root ::-webkit-scrollbar-thumb { background: var(--nk-line); border-radius: 4px; }
+.nursekit-root ::-webkit-scrollbar-thumb:hover { background: var(--nk-ink-mute); }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .nursekit-root .nk-form-grid { grid-template-columns: 1fr; }
+  .nursekit-root .nk-lab-grid { grid-template-columns: 1fr; }
+  .nursekit-root .nk-panels { padding: 16px; }
+  .nursekit-root .nk-chat-wrap { height: calc(100vh - 240px); }
+}
