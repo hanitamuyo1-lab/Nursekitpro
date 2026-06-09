@@ -11,6 +11,7 @@ export default function Footer() {
           <Link to="/faq">FAQ</Link>
           <Link to="/privacy">Privacy</Link>
           <Link to="/terms">Terms</Link>
+          <Link to="/support">Support</Link>
         </div>
       </div>
     </footer>
